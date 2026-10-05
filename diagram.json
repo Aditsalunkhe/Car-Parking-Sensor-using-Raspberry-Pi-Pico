@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "author": "Aditya Salunkhe",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20260406-v1.28.0" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -22.3,
+      "left": -170.9,
+      "rotate": 270,
+      "attrs": { "distance": "400" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 130.8,
+      "left": -169,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 207.6,
+      "left": -169,
+      "attrs": { "color": "yellow" }
+    },
+    { "type": "wokwi-led", "id": "led3", "top": 284.4, "left": -169, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 167.15,
+      "left": -124.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 243.95,
+      "left": -124.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 320.75,
+      "left": -124.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 26.1,
+      "left": 100.5,
+      "rotate": 90,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "ultrasonic1:TRIG", "pico:GP3", "green", [ "v0.4", "h9.6", "v22.35" ] ],
+    [ "ultrasonic1:ECHO", "pico:GP2", "green", [ "h19.2", "v23.15" ] ],
+    [ "ultrasonic1:VCC", "pico:VBUS", "red", [ "h9.6", "v-67.2", "h134.4", "v38.4", "v3.15" ] ],
+    [ "ultrasonic1:GND", "pico:GND.1", "black", [ "h28.8", "v23.55" ] ],
+    [ "led1:A", "r1:1", "green", [ "v0" ] ],
+    [ "pico:GND.4", "led1:C", "black", [ "h-63.6", "v6.45", "h-96" ] ],
+    [ "led2:A", "r2:1", "green", [ "v0" ] ],
+    [ "led2:C", "pico:GND.4", "black", [ "v19.2", "h106", "v-86.4", "h54" ] ],
+    [ "led3:A", "r3:1", "green", [ "v0" ] ],
+    [ "led3:C", "pico:GND.4", "black", [ "v19.2", "h125.2" ] ],
+    [ "r1:2", "pico:GP10", "green", [ "v0" ] ],
+    [ "r2:2", "pico:GP11", "green", [ "v0" ] ],
+    [ "r3:2", "pico:GP12", "green", [ "v0" ] ],
+    [ "bz1:2", "pico:VBUS", "green", [ "h0" ] ],
+    [ "bz1:1", "pico:GP15", "black", [ "h-115.2", "v134.4" ] ]
+  ],
+  "dependencies": {}
+}
